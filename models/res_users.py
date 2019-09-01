@@ -3,6 +3,7 @@
 import werkzeug
 from urlparse import urljoin
 import logging
+import validate_email
 
 from ast import literal_eval
 

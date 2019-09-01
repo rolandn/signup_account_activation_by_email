@@ -2,6 +2,7 @@
 
 import logging
 import werkzeug
+import validate_email
 
 from odoo import http, _
 from odoo.addons.auth_signup.controllers.main import AuthSignupHome
@@ -31,9 +32,9 @@ class SignupVerifyEmail(AuthSignupHome):
             return http.request.render("auth_signup.signup", qcontext)
 
         # Check field values are valid
-        if not validate_email(values.get("login", "")):
-            qcontext["error"] = _("That does not seem to be an email address.")
-            return http.request.render("auth_signup.signup", qcontext)
+        # if not validate_email(values.get("login", "")):
+        #     qcontext["error"] = _("That does not seem to be an email address.")
+        #     return http.request.render("auth_signup.signup", qcontext)
         elif values.get("password") != values.get("confirm_password"):
             qcontext["error"] = _("Password and Confirm Password does't match.")
             return http.request.render("auth_signup.signup", qcontext)
