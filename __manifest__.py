@@ -16,7 +16,7 @@
     ],
     "external_dependencies": {
         "python": [
-
+            "validate_email",
         ],
     },
     'installable': True,

@@ -31,14 +31,14 @@ class SignupVerifyEmail(AuthSignupHome):
             return http.request.render("auth_signup.signup", qcontext)
 
         # Check field values are valid
-        # if not validate_email(values.get("login", "")):
-        #     qcontext["error"] = _("That does not seem to be an email address.")
-        #     return http.request.render("auth_signup.signup", qcontext)
-        # elif values.get("password") != values.get("confirm_password"):
-        #     qcontext["error"] = _("Password and Confirm Password does't match.")
-        #     return http.request.render("auth_signup.signup", qcontext)
-        # elif not values.get("email"):
-        #     values["email"] = values.get("login")
+        if not validate_email(values.get("login", "")):
+            qcontext["error"] = _("That does not seem to be an email address.")
+            return http.request.render("auth_signup.signup", qcontext)
+        elif values.get("password") != values.get("confirm_password"):
+            qcontext["error"] = _("Password and Confirm Password does't match.")
+            return http.request.render("auth_signup.signup", qcontext)
+        elif not values.get("email"):
+            values["email"] = values.get("login")
 
         sudo_users = (http.request.env["res.users"].with_context(create_user=True).sudo())
 
