@@ -35,7 +35,7 @@ class SignupVerifyEmail(AuthSignupHome):
         # if not validate_email(values.get("login", "")):
         #     qcontext["error"] = _("That does not seem to be an email address.")
         #     return http.request.render("auth_signup.signup", qcontext)
-        elif values.get("password") != values.get("confirm_password"):
+         if values.get("password") != values.get("confirm_password"):
             qcontext["error"] = _("Password and Confirm Password does't match.")
             return http.request.render("auth_signup.signup", qcontext)
         elif not values.get("email"):
